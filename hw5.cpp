@@ -1,21 +1,5 @@
 // 1. Запишіть прототип для функції з ім'ям Perimeter, яка повертає значення типу unsigned long int та приймає два параметри типу unsigned short int.
-// #include <iostream>
-//
-// unsigned long int Perimeter(unsigned short int a, unsigned short int b) {
-//     // Calculate the perimeter of a rectangle
-//     unsigned long int perimeter = 2 * (a + b);
-//     return perimeter;
-// }
-//
-// int main() {
-//     unsigned short int length = 5;
-//     unsigned short int width = 3;
-//
-//     unsigned long int result = Perimeter(length, width);
-//     std::cout << "The perimeter of the rectangle is: " << result << std::endl;
-//
-//     return 0;
-// }
+unsigned long int Perimeter(unsigned short int a, unsigned short int b);
 // 2. Запишіть визначення функції Perimeter згідно з оголошенням у вправі 1. Два параметри, що нею приймаються, представляють довжину і ширину прямокутника, а функція повертає його периметр (подвоєна довжина плюс подвоєна ширина).
 // #include <iostream>
 //
