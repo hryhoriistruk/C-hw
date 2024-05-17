@@ -1,0 +1,116 @@
+// 1. Поясніть зміст наступних об'яв змінних.
+// • int *pOne;
+// • int vTwo:
+// • int *pThree = &vTwo;
+// int *pOne;: Це оголошення вказівника з іменем pOne, який може зберігати адресу пам'яті змінної типу ціле число (int). Однак на даний момент pOne не ініціалізований і не вказує на жодне конкретне місце в пам'яті.
+// int vTwo;: Це оголошення змінної типу ціле число (int) з іменем vTwo. Це звичайна змінна типу ціле число, яка може зберігати цілі значення.
+// int *pThree = &vTwo;: Це оголошення вказівника з іменем pThree і ініціалізація його адресою пам'яті змінної типу ціле число vTwo. Зараз pThree вказує на місце в пам'яті, де зберігається vTwo.
+// Допустимо, в програмі оголошена змінна yourAge типу unsigned short. Як оголосити вказівник, що дозволяє маніпулювати цією змінною?
+// Для оголошення вказівника, що дозволяє маніпулювати змінною типу unsigned short yourAge, ви можете використати наступне
+// unsigned short yourAge;
+// unsigned short *pYourAge = &yourAge;
+// У цьому випадку pYourAge буде вказівником, який вказує на змінну yourAge типу unsigned short, дозволяючи вам працювати з її значенням та адресою в пам'яті.
+// Ось повний код, який оголошує змінну yourAge типу unsigned short і вказівник pYourAge, який дозволяє маніпулювати цією змінною:
+// #include <stdio.h>
+//
+// int main() {
+//     unsigned short yourAge;
+//     unsigned short *pYourAge = &yourAge;
+//
+//     // Присвоєння значення yourAge через вказівник
+//     *pYourAge = 25;
+//
+//     // Виведення значення yourAge
+//     printf("Your age is: %hu\n", yourAge);
+//
+//     return 0;
+// }
+// 3. За допомогою вказівника присвойте змінній вашого значення 50
+// #include <stdio.h>
+//
+// int main() {
+//     unsigned short yourAge;
+//     unsigned short *pYourAge = &yourAge;
+//
+//     // Присвоєння значення yourAge через вказівник
+//     *pYourAge = 50;
+//
+//     // Виведення значення yourAge
+//     printf("Your age is: %hu\n", yourAge);
+//
+//     return 0;
+// }
+// 4. Напишіть невелику програму і оголосіть змінну типу int і вказівник на цей тип. Збережіть адресу змінної в вказівнику. Використовуючи вказівник, надайте змінній якесь значення.
+// #include <stdio.h>
+//
+// int main() {
+//     int myNumber;
+//     int *pMyNumber = &myNumber;
+//
+//     // Присвоєння значення myNumber через вказівник
+//     *pMyNumber = 100;
+//
+//     // Виведення значення myNumber
+//     printf("My number is: %d\n", myNumber);
+//
+//     return 0;
+// }
+// 5. Жучки: знайдіть помилку у наступному фрагменті програми
+// #include <iostream>
+//
+// using namespace std;
+//
+// int main()
+// {
+//     int *pInt;
+//     *pInt = 9;
+//     cout << " The value at pInt: "<< *pInt;
+//
+//     return 0;
+// }
+// Помилка у цьому фрагменті програми полягає в тому, що вказівник pInt не був ініціалізований перед спробою розіменування його для присвоєння значення.
+// Ось виправлений фрагмент програми:
+// #include <iostream>
+//
+// using namespace std;
+//
+// int main()
+// {
+//     int *pInt = new int;
+//     *pInt = 9;
+//     cout << "The value at pInt: " << *pInt;
+//
+//     delete pInt; // Звільнення пам'яті, яку ми виділили
+//
+//     return 0;
+// }
+// 6. Жучки: знайдіть помилку у наступному фрагменті програми.
+// #include <iostream>
+//
+// using namespace std;
+//
+// int main()
+// {
+//     int SomeVariable = 5;
+//     cout << "SomeVariable: " << SomeVariable << "\n";
+//     int *pVar = &SomeVariable;
+//     pVar = 9;
+//     cout << "SomeVariable: " << *pVar << "\n";
+//     return 0;
+// }
+// Помилка у цьому фрагменті програми полягає в тому, що ви намагаєтесь присвоїти ціле число (9) вказівникові pVar, що недопустимо. Вам потрібно присвоїти значення через розіменування вказівника, а не самому вказівнику.
+// Ось виправлений фрагмент програми:
+// #include <iostream>
+//
+// using namespace std;
+//
+// int main()
+// {
+//     int SomeVariable = 5;
+//     cout << "SomeVariable: " << SomeVariable << "\n";
+//     int *pVar = &SomeVariable;
+//     *pVar = 9;  // Присвоєння значення через вказівник
+//     cout << "SomeVariable: " << *pVar << "\n";
+//     return 0;
+// }
+// У цьому виправленому коді ми виправили помилку, використовуючи розіменування вказівника pVar для присвоєння значення 9 змінній SomeVariable.
