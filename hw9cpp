@@ -1,0 +1,201 @@
+// 1.Напишіть програму, яка оголошує змінну типу int, посилання на значення типу int і вказівник на значення типу int. Використовуйте вказівник та посилання для керування значенням змінної типу int.
+// #include <iostream>
+//
+// int main() {
+//     int value = 10;
+//
+//     // Оголошення посилання на значення типу int
+//     int* pointer = &value;
+//
+//     // Оголошення вказівника на значення типу int
+//     int* reference = pointer;
+//
+//     std::cout << "Значення змінної: " << value << std::endl;
+//     std::cout << "Значення посилання: " << *pointer << std::endl;
+//     std::cout << "Значення вказівника: " << *reference << std::endl;
+//
+//     // Зміна значення змінної через посилання
+//     *pointer = 20;
+//     std::cout << "Змінено значення змінної: " << value << std::endl;
+//     std::cout << "Змінено значення посилання: " << *pointer << std::endl;
+//     std::cout << "Змінено значення вказівника: " << *reference << std::endl;
+//
+//     // Зміна значення змінної через вказівник
+//     *reference = 30;
+//     std::cout << "Змінено значення змінної: " << value << std::endl;
+//     std::cout << "Змінено значення посилання: " << *pointer << std::endl;
+//     std::cout << "Змінено значення вказівника: " << *reference << std::endl;
+//
+//     return 0;
+// }
+// 2. Напишіть програму, яка оголошує константний вказівник на постійне ціле значення. Ініціалізуйте цей вказівник, щоб він вказав на цілісну змінну varOne. Надайте змінній varOne значення 6. Використовуйте вказівник, щоб, присвоїти змінній varOne значення 7. Створіть другу цілочисленну змінну varTwo. Перепризначте вказівник, щоб він вказував на змінну varTwo. Поки не компілюйте цю вправу.
+// #include <iostream>
+//
+// int main() {
+//     const int varOne = 6;
+//     int varTwo = 7;
+//
+//     // Create a non-constant pointer and assign it the address of varOne
+//     int* nonConstPtr = const_cast<int*>(&varOne);
+//
+//     // Assign the value of varTwo to the variable pointed to by nonConstPtr
+//     *nonConstPtr = varTwo;
+//
+//     std::cout << "Значення змінної varOne після перепризначення: " << varOne << std::endl;
+//
+//     return 0;
+// }
+// 3. Скомпілюйте програму, написану у вправі 2. Які дії компілятор вважає помилковими? Які рядки генерують попередження?
+// Ця команда передбачає, що ви використовуєте колекцію компіляторів GNU (GCC) як компілятор. Прапор -Wall вмикає всі попередження компілятора, а прапор -Wextra вмикає додаткові попередження. Прапорець -o output_file визначає назву вихідного файлу.
+// Коли ви виконуєте цю команду, компілятор скомпілює файл main.cpp і згенерує вихідний файл під назвою output_file. Він також відображатиме всі помилки та попередження, які виникли під час процесу компіляції.
+// Зауважте, що конкретні попередження та помилки компілятора можуть відрізнятися залежно від вашого компілятора та налаштувань компілятора.
+// Щодо коду, який ви надали, здається, що ви намагаєтеся змінити постійну змінну за допомогою постійного покажчика. Це неприпустимо і призведе до помилки компілятора. Щоб вирішити цю проблему, ви можете або видалити кваліфікатор const з оголошення покажчика, або знайти альтернативний спосіб досягнення бажаної функціональності без зміни значення постійної змінної.
+// Ось виправлений код:
+// #include <iostream>
+//
+// int main() {
+//     const int varOne = 6;
+//     int varTwo = 7;
+//
+//     // Create a non-constant pointer and assign it the address of varOne
+//     int* nonConstPtr = const_cast<int*>(&varOne);
+//
+//     // Assign the value of varTwo to the variable pointed to by nonConstPtr
+//     *nonConstPtr = varTwo;
+//
+//     std::cout << "Значення змінної varOne після перепризначення: " << varOne << std::endl;
+//
+//     return 0;
+// }
+// 4 Напишіть програму, яка створює блукаючий вказівник.
+// #include <iostream>
+//
+// int main() {
+//     int* danglingPtr;
+//
+//     // Create a dangling pointer by assigning it the address of a local variable
+//     int localVariable = 42;
+//     danglingPtr = &localVariable;
+//
+//     // Accessing the value through the dangling pointer is undefined behavior
+//     std::cout << "*danglingPtr: " << *danglingPtr << std::endl;
+//
+//     return 0;
+// }
+// 5. Виправте програму з вправи 4, щоб виправити блукаючий вказівник.
+// #include <iostream>
+//
+// int main() {
+//     int* danglingPtr;
+//
+//     // Create a non-constant pointer to dynamically allocate memory
+//     int* nonConstPtr = new int;
+//     *nonConstPtr = 42;
+//
+//     // Assign the address of the dynamically allocated memory to the non-constant pointer
+//     danglingPtr = nonConstPtr;
+//
+//     // Access the value through the non-constant pointer
+//     std::cout << "*danglingPtr: " << *danglingPtr << std::endl;
+//
+//     // Deallocate the dynamically allocated memory
+//     delete nonConstPtr;
+//
+//     return 0;
+// }
+// 6. Напишіть програму, яка призводить до витоку пам'яті.
+// #include <iostream>
+//
+// int main() {
+//     int* leakyPtr;
+//
+//     // Create a new integer and assign its address to leakyPtr
+//     for (int i = 0; i < 10; ++i) {
+//         leakyPtr = new int(i);
+//         std::cout << "*leakyPtr: " << *leakyPtr << std::endl;
+//
+//         // Deallocate the previously allocated memory
+//         delete leakyPtr;
+//     }
+//
+//     return 0;
+// }
+// 7. Виправте програму із вправи 6.
+// #include <iostream>
+//
+// int main() {
+//     int* leakyPtr = nullptr;
+//
+//     // Create a new integer and assign its address to leakyPtr
+//     for (int i = 0; i < 10; ++i) {
+//         if (leakyPtr != nullptr) {
+//             delete leakyPtr;
+//         }
+//         leakyPtr = new int(i);
+//         std::cout << "*leakyPtr: " << *leakyPtr << std::endl;
+//     }
+//
+//     // Deallocate the remaining memory
+//     if (leakyPtr != nullptr) {
+//         delete leakyPtr;
+//     }
+//
+//     return 0;
+// }
+// 8.Жучки: що неправильно у цій програмі?
+// Щоб вирішити цю проблему, можна або повернути вказівник, або динамічно призначити об'єкт Cat за допомогою new і повернути на нього вказівник. Ось приклад того, як ви можете змінити код
+// #include <iostream>
+//
+// class Cat
+// {
+// public:
+//     Cat(int age) : itsAge(age) {}
+//     ~Cat() {}
+//     int GetAge() const { return itsAge; }
+//
+// private:
+//     int itsAge;
+// };
+//
+// Cat* MakeCat(int age)
+// {
+//     return new Cat(age);
+// }
+//
+// int main()
+// {
+//     int age = 7;
+//     Cat* pBoots = MakeCat(age);
+//     std::cout << "Boots is: " << pBoots->GetAge() << " years old" << std::endl;
+//     delete pBoots;
+//     return 0;
+// }
+// У цьому модифікованому коді функція MakeCat тепер повертає покажчик на об'єкт Cat. Об'єкт Cat динамічно розподіляється за допомогою new і повертається як вказівник. У головній функції створюємо покажчик pBoots і присвоюємо йому адресу об'єкта Cat, що повертається MakeCat. Потім ми отримуємо доступ до функції GetAge за допомогою покажчика pBoots. Нарешті, ми розподіляємо динамічно розподілену пам'ять за допомогою delete pBoots, щоб уникнути витоку пам'яті.
+// 9. Виправте програму із вправи 8.
+// #include <iostream>
+//
+// class Cat
+// {
+// public:
+//     Cat(int age) : itsAge(age) {}
+//     ~Cat() {}
+//     int GetAge() const { return itsAge; }
+//
+// private:
+//     int itsAge;
+// };
+//
+// Cat* MakeCat(int age)
+// {
+//     return new Cat(age);
+// }
+//
+// int main()
+// {
+//     int age = 7;
+//     Cat* pBoots = MakeCat(age);
+//     std::cout << "Boots is: " << pBoots->GetAge() << " years old" << std::endl;
+//     delete pBoots;
+//     return 0;
+// }
+// У цьому модифікованому коді функція MakeCat тепер повертає покажчик на об'єкт Cat. Об'єкт Cat динамічно розподіляється за допомогою new і повертається як вказівник. У головній функції створюємо покажчик pBoots і присвоюємо йому адресу об'єкта Cat, що повертається MakeCat. Потім ми отримуємо доступ до функції GetAge за допомогою покажчика pBoots. Нарешті, ми розподіляємо динамічно розподілену пам'ять за допомогою delete pBoots, щоб уникнути витоку пам'яті.
