@@ -78,10 +78,11 @@
 //     danglingPtr = &localVariable;
 //
 //     // Accessing the value through the dangling pointer is undefined behavior
-//     std::cout << "*danglingPtr: " << *danglingPtr << std::endl;
+//     std::cout << "*" << danglingPtr << " = " << *danglingPtr << std::endl;
 //
 //     return 0;
 // }
+
 // 5. Виправте програму з вправи 4, щоб виправити блукаючий вказівник.
 // #include <iostream>
 //
