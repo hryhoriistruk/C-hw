@@ -50,61 +50,42 @@
 //     return 0;
 // }
 // 2. Використовуючи клас, створений у вправі 1, за допомогою конструктора, заданого за замовчуванням, ініціалізуйте змінну його Radius значенням 5.
-#include <iostream>
+// #include <iostream>
 
-class SimpleCircle {
-private:
-    double radius;
-
-public:
-    SimpleCircle() = default;
-    ~SimpleCircle() = default;
-
-    SimpleCircle(double itsRadius) : radius(itsRadius) {
-    }
-
-    void setRadius(double r) {
-        radius = r;
-    }
-
-    double getRadius() const {
-        return radius;
-    }
-
-    double getArea() const {
-        return 3.14159 * radius * radius;
-    }
-
-    double getCircumference() const {
-        return 2 * 3.14159 * radius;
-    }
-};
-
-int main() {
-    SimpleCircle circle(5.0);
-
-    std::cout << "Radius: " << circle.getRadius() << std::endl;
-    std::cout << "Area: " << circle.getArea() << std::endl;
-    std::cout << "Circumference: " << circle.getCircumference() << std::endl;
-
-    return 0;
-}
-// 3. Додайте до класу новий конструктор, який надає значення свого параметра змінної його itsRadius.
 // class SimpleCircle {
 // private:
 //     double radius;
-//
+
 // public:
-//     SimpleCircle() = default;
+//     SimpleCircle() : radius(5) {} // Initialize radius with value 5 using the constructor
 //     ~SimpleCircle() = default;
-//
-//     SimpleCircle(double itsRadius) : radius(itsRadius) {
-//     }
-//
+
 //     void setRadius(double r) {
 //         radius = r;
 //     }
+
+//     double getRadius() const {
+//         return radius;
+//     }
+
+//     double getArea() const {
+//         return 3.14159 * radius * radius;
+//     }
+
+//     double getCircumference() const {
+//         return 2 * 3.14159 * radius;
+//     }
 // };
+
+// int main() {
+//     SimpleCircle circle; // Create an instance of SimpleCircle using the constructor
+
+//     std::cout << "Radius: " << circle.getRadius() << std::endl;
+//     std::cout << "Area: " << circle.getArea() << std::endl;
+//     std::cout << "Circumference: " << circle.getCircumference() << std::endl;
+
+//     return 0;
+// }
 // Ось повний код:
 // #include <iostream>
 //
